@@ -1,12 +1,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.github.mwiede</groupId>
+    <groupId>cz.it4i.fiji</groupId>
     <artifactId>jsch</artifactId>
     <packaging>jar</packaging>
-    <version>0.2.8-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>JSch</name>
     <url>https://github.com/mwiede/jsch</url>
     <description>JSch is a pure Java implementation of SSH2</description>
+    <organization>
+        <name>SciJava</name>
+        <url>https://scijava.org/</url>
+    </organization>
     <scm>
         <connection>scm:git:https://github.com/mwiede/jsch.git</connection>
         <developerConnection>scm:git:https://github.com/mwiede/jsch.git</developerConnection>
@@ -14,15 +18,15 @@
         <tag>HEAD</tag>
     </scm>
     <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-    </distributionManagement>
+		<repository>
+			<id>it4i</id>
+			<url>https://artifactory.cs.vsb.cz/it4i/</url>
+		</repository>
+		<snapshotRepository>
+			<id>it4i</id>
+			<url>https://artifactory.cs.vsb.cz/it4i/</url>
+		</snapshotRepository>
+	</distributionManagement>
     <issueManagement>
         <system>GitHub</system>
         <url>https://github.com/mwiede/jsch/issues</url>
@@ -198,7 +202,7 @@
                         <configuration>
                             <rules>
                                 <requireJavaVersion>
-                                    <version>16</version>
+                                    <version>8</version>
                                 </requireJavaVersion>
                                 <dependencyConvergence />
                                 <banDuplicatePomDependencyVersions />
@@ -270,81 +274,15 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.10.1</version>
                 <configuration>
-                    <release>8</release>
-                    <showDeprecation>true</showDeprecation>
+                    <source>8</source>
+                    <target>8</target>
                     <showWarnings>true</showWarnings>
                     <compilerArgs>
                         <arg>-Xlint:all,-processing,-classfile</arg>
                         <arg>-Werror</arg>
                     </compilerArgs>
                 </configuration>
-                <executions>
-                    <execution>
-                        <id>default-compile-9</id>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                        <configuration>
-                            <compileSourceRoots>
-                                <compileSourceRoot>${project.basedir}/src/main/java9</compileSourceRoot>
-                            </compileSourceRoots>
-                            <multiReleaseOutput>true</multiReleaseOutput>
-                            <release>9</release>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>default-compile-10</id>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                        <configuration>
-                            <compileSourceRoots>
-                                <compileSourceRoot>${project.basedir}/src/main/java10</compileSourceRoot>
-                            </compileSourceRoots>
-                            <multiReleaseOutput>true</multiReleaseOutput>
-                            <release>10</release>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>default-compile-11</id>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                        <configuration>
-                            <compileSourceRoots>
-                                <compileSourceRoot>${project.basedir}/src/main/java11</compileSourceRoot>
-                            </compileSourceRoots>
-                            <multiReleaseOutput>true</multiReleaseOutput>
-                            <release>11</release>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>default-compile-15</id>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                        <configuration>
-                            <compileSourceRoots>
-                                <compileSourceRoot>${project.basedir}/src/main/java15</compileSourceRoot>
-                            </compileSourceRoots>
-                            <multiReleaseOutput>true</multiReleaseOutput>
-                            <release>15</release>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>default-compile-16</id>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                        <configuration>
-                            <compileSourceRoots>
-                                <compileSourceRoot>${project.basedir}/src/main/java16</compileSourceRoot>
-                            </compileSourceRoots>
-                            <multiReleaseOutput>true</multiReleaseOutput>
-                            <release>16</release>
-                        </configuration>
-                    </execution>
-                </executions>
+                
             </plugin>
             <plugin>
                 <groupId>org.apache.felix</groupId>
